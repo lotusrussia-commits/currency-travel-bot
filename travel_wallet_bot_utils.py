@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-import logging
 from datetime import datetime
 
 import sqlite3
@@ -18,8 +17,6 @@ from telegram.ext import (
 
 from currency_manager import CurrencyManager
 from database import TravelWalletDB
-
-logger = logging.getLogger(__name__)
 
 # Тексты кнопок главного меню.
 BTN_CREATE_TRIP = "🌍 Создать путешествие"

@@ -6,9 +6,18 @@ Travel Wallet Bot — точка входа.
 
 from __future__ import annotations
 
-import logging
 import os
 import sys
+from pathlib import Path
+
+# Если запуск без activate venv — переключаемся на venv/bin/python3.
+_project_root = Path(__file__).resolve().parent
+_venv_dir = _project_root / "venv"
+_venv_python = _venv_dir / "bin" / "python3"
+if _venv_python.exists() and Path(sys.prefix).resolve() != _venv_dir.resolve():
+    os.execv(str(_venv_python), [str(_venv_python), *sys.argv])
+
+import logging
 
 from dotenv import load_dotenv
 from telegram.ext import Application, CommandHandler, MessageHandler, filters
